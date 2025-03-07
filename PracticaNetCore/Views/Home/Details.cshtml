@@ -29,27 +29,27 @@
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $(document).on("click", ".cambiar-imagen", function (e) {
-            e.preventDefault();
+    <script>
+        $(document).ready(function () {
+            $(document).on("click", ".cambiar-imagen", function (e) {
+                e.preventDefault();
 
-            var posicion = $(this).data("posicion");
-            var zapatilla = $(this).data("zapatilla");
+                var posicion = $(this).data("posicion");
+                var zapatilla = $(this).data("zapatilla");
 
-            $.ajax({
-                url: "/Home/GetImagen",  // Reemplaza 'ControllerName' por el nombre correcto
-                type: "GET",
-                data: { posicion: posicion, zapatilla: zapatilla },
-                success: function (data) {
-                    $("#imagen-container").html(data);
-                },
-                error: function () {
-                    alert("No se pudo cargar la imagen.");
-                }
+                $.ajax({
+                    url: "/Home/GetImagen",  // Reemplaza 'ControllerName' por el nombre correcto
+                    type: "GET",
+                    data: { posicion: posicion, zapatilla: zapatilla },
+                    success: function (data) {
+                        $("#imagen-container").html(data);
+                    },
+                    error: function () {
+                        alert("No se pudo cargar la imagen.");
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
