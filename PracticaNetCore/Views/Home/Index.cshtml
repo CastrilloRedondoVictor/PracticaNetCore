@@ -1,0 +1,14 @@
+﻿@model List<Zapatilla>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<ul class="list-group">
+    @foreach (Zapatilla zapatilla in Model)
+    {
+        <li class="list-group-item">
+            <a asp-action="Details" asp-route-zapatilla="@zapatilla.Id">@zapatilla.Nombre</a>
+        </li>
+    }
+</ul>

@@ -1,0 +1,55 @@
+﻿@model Imagen
+@{
+    var zapatilla = (Zapatilla)ViewData["ZAPATILLA"];
+
+    var viewData = new ViewDataDictionary(ViewData) { { "ZAPATILLA_ID", zapatilla.Id } };
+}
+
+<h1>Información de la Zapatilla</h1>
+
+<a asp-action="Index" class="btn btn-secondary m-3">Volver a la lista de zapatillas</a>
+
+<div class="card">
+    <div class="card-body">
+        <div class="alert alert-danger">
+            <strong>Id Zapatilla:</strong> @zapatilla.Id
+        </div>
+        <div class="alert alert-info">
+            <strong>Nombre:</strong> @zapatilla.Nombre
+        </div>
+        <div class="alert alert-info">
+            <strong>Precio:</strong> @zapatilla.Precio €
+        </div>
+        <div class="alert alert-info">
+            <strong>Descripción:</strong> @zapatilla.Descripcion
+        </div>
+
+        @Html.Partial("_ImagenPartial", Model, viewData)
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(document).on("click", ".cambiar-imagen", function (e) {
+            e.preventDefault();
+
+            var posicion = $(this).data("posicion");
+            var zapatilla = $(this).data("zapatilla");
+
+            $.ajax({
+                url: "/Home/GetImagen",  // Reemplaza 'ControllerName' por el nombre correcto
+                type: "GET",
+                data: { posicion: posicion, zapatilla: zapatilla },
+                success: function (data) {
+                    $("#imagen-container").html(data);
+                },
+                error: function () {
+                    alert("No se pudo cargar la imagen.");
+                }
+            });
+        });
+    });
+</script>

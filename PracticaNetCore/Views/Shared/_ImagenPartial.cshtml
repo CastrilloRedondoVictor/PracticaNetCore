@@ -1,0 +1,18 @@
+﻿@model Imagen
+
+<div id="imagen-container">
+    <h3 class="text-primary">Imagen @ViewData["POSICION"] de @ViewData["REGISTROS"]</h3>
+
+    <div class="mb-2">
+        <a href="#" class="cambiar-imagen" data-posicion="1" data-zapatilla="@ViewData["ZAPATILLA_ID"]">Primero</a>
+        <a href="#" class="cambiar-imagen" data-posicion="@(Convert.ToInt32(ViewData["POSICION"]) - 1)" data-zapatilla="@ViewData["ZAPATILLA_ID"]">Anterior</a>
+        <a href="#" class="cambiar-imagen" data-posicion="@(Convert.ToInt32(ViewData["POSICION"]) + 1)" data-zapatilla="@ViewData["ZAPATILLA_ID"]">Siguiente</a>
+        <a href="#" class="cambiar-imagen" data-posicion="@ViewData["REGISTROS"]" data-zapatilla="@ViewData["ZAPATILLA_ID"]">Último</a>
+    </div>
+
+    <div class="row">
+        <div class="col-6 offset-3">
+            <img src="@Model.Url" class="img-fluid" />
+        </div>
+    </div>
+</div>
