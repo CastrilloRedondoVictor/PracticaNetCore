@@ -40,7 +40,7 @@
                 var zapatilla = $(this).data("zapatilla");
 
                 $.ajax({
-                    url: "/Home/GetImagen",  // Reemplaza 'ControllerName' por el nombre correcto
+                    url: "/Home/GetImagen",
                     type: "GET",
                     data: { posicion: posicion, zapatilla: zapatilla },
                     success: function (data) {
